@@ -3,6 +3,9 @@ from django.db import models
 class Equipment(models.Model):
     equipment = models.CharField(max_length=50)
 
+    def __str__(self) -> str:
+        return self.equipment
+
 class Car(models.Model):
     ENGINE_TYPES = [
         ("bezyna", "Bęzynowy"),
@@ -47,9 +50,12 @@ class Car(models.Model):
     fuel_usage = models.DecimalField(max_digits=10, decimal_places=2)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     mileage_limit = models.PositiveIntegerField()
-    value = models.models.PositiveIntegerField()
+    value = models.PositiveIntegerField()
     availability = models.BooleanField()
     insurance_expiry_date = models.DateField()
     equipment = models.ManyToManyField(Equipment)
     image = models.ImageField()
+
+    def __str__(self) -> str:
+        return self.brand + " " + self.model
 
